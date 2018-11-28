@@ -1,3 +1,4 @@
+import linkedList.LinkedList;
 import queue.LinkedListQueue;
 import queue.Queue;
 
@@ -58,39 +59,39 @@ public class Main {
         /**
          * 链表测试
          */
-//        LinkedList<Integer> linkedList = new LinkedList<>();
-//        for (int i = 0 ;i<5;i++){
-//            linkedList.addFirst(i);
-//            System.out.println(linkedList);
-//        }
-//        System.out.println(linkedList.get(0));
-//        linkedList.set(2,666);
-//        System.out.println(linkedList);
-//
-//        linkedList.remove(2);
-//        System.out.println(linkedList);
-//
-//        linkedList.removeFirst();
-//        System.out.println(linkedList);
-//
-//        linkedList.removeLast();
-//        System.out.println(linkedList);
-//
-//        linkedList.removeLast();
-//        System.out.println(linkedList);
-
-        /**
-         * 链表队列测试
-         */
-        LinkedListQueue<Integer> queue = new LinkedListQueue<>();
-        for (int i = 1; i <= 10; i++) {
-            queue.enqueue(i);
-            System.out.println(queue);
-            if (i % 3 == 0) {
-                queue.dequeue();
-                System.out.println(queue);
-            }
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        for (int i = 0 ;i<5;i++){
+            linkedList.addFirst(i);
+            System.out.println(linkedList);
         }
+        System.out.println(linkedList.get(0));
+        linkedList.set(2,666);
+        System.out.println(linkedList);
+
+        linkedList.remove(2);
+        System.out.println(linkedList);
+
+        linkedList.removeFirst();
+        System.out.println(linkedList);
+
+        linkedList.removeLast();
+        System.out.println(linkedList);
+
+        linkedList.removeLast();
+        System.out.println(linkedList);
+
+//        /**
+//         * 链表队列测试
+//         */
+//        LinkedListQueue<Integer> queue = new LinkedListQueue<>();
+//        for (int i = 1; i <= 10; i++) {
+//            queue.enqueue(i);
+//            System.out.println(queue);
+//            if (i % 3 == 0) {
+//                queue.dequeue();
+//                System.out.println(queue);
+//            }
+//        }
 //        System.out.println(queue);
 
     }

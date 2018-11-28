@@ -50,14 +50,36 @@ public class LinkedList<E> {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("index illegal");
         }
-        Node targetNode = dummyHead;
-        for (int i = 0; i < index; i++) {
-            targetNode = targetNode.next;
+//        Node targetNode = dummyHead;
+//        for (int i = 0; i < index; i++) {
+//            targetNode = targetNode.next;
+//        }
+//        Node sourceNode = new Node(e);
+//        sourceNode.next = targetNode.next;
+//        targetNode.next = sourceNode;
+//        size++;
+
+        dummyHead.next = add(dummyHead.next, e, index, 0);
+
+    }
+
+    /**
+     * 递归添加
+     *
+     * @param node
+     * @param e
+     * @param index
+     * @param count
+     * @return
+     */
+    private Node add(Node node, E e, int index, int count) {
+        if (count == index) {
+            Node insertNode = new Node(e, node);
+            size++;
+            return insertNode;
         }
-        Node sourceNode = new Node(e);
-        sourceNode.next = targetNode.next;
-        targetNode.next = sourceNode;
-        size++;
+        node.next = add(node.next, e, index, count++);
+        return node;
     }
 
     public void addFirst(E e) {
