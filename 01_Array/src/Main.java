@@ -1,9 +1,5 @@
-import linkedList.LinkedList;
-import queue.ArrayQueue;
-import queue.LoopQueue;
+import queue.LinkedListQueue;
 import queue.Queue;
-import stack.ArrayStack;
-import stack.LinkedListStack;
 
 public class Main {
 
@@ -82,6 +78,21 @@ public class Main {
 //
 //        linkedList.removeLast();
 //        System.out.println(linkedList);
+
+        /**
+         * 链表队列测试
+         */
+        LinkedListQueue<Integer> queue = new LinkedListQueue<>();
+        for (int i = 1; i <= 10; i++) {
+            queue.enqueue(i);
+            System.out.println(queue);
+            if (i % 3 == 0) {
+                queue.dequeue();
+                System.out.println(queue);
+            }
+        }
+//        System.out.println(queue);
+
     }
 
     /**
