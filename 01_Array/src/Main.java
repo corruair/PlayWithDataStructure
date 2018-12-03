@@ -71,14 +71,17 @@ public class Main {
         linkedList.remove(2);
         System.out.println(linkedList);
 
-        linkedList.removeFirst();
+        linkedList.removeElements(1);
         System.out.println(linkedList);
 
-        linkedList.removeLast();
-        System.out.println(linkedList);
-
-        linkedList.removeLast();
-        System.out.println(linkedList);
+//        linkedList.removeFirst();
+//        System.out.println(linkedList);
+//
+//        linkedList.removeLast();
+//        System.out.println(linkedList);
+//
+//        linkedList.removeLast();
+//        System.out.println(linkedList);
 
 //        /**
 //         * 链表队列测试

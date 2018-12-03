@@ -1,4 +1,4 @@
-package linkedList;
+package set;
 
 /**
  * 链表
@@ -184,6 +184,7 @@ public class LinkedList<E> {
             Node delNode = preNode.next;
             preNode.next = preNode.next.next;
             delNode = null;
+            size--;
         }
     }
 
