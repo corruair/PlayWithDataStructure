@@ -1,5 +1,6 @@
 import binarySearchTree.BST;
 import maxHeap.MaxHeap;
+import segmentTree.SegmentTree;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -55,9 +56,13 @@ public class Main {
 //        maxHeap.replaceMax(5);
 //        System.out.println(maxHeap.toString());
 
-        Solution solution = new Solution();
-        String str = solution.frequencySort("tree");
-        System.out.println(str);
+//        Solution solution = new Solution();
+//        String str = solution.frequencySort("tree");
+//        System.out.println(str);
+
+        Integer[] array = new Integer[]{1, 2, 3, -1, -2, -3};
+        SegmentTree<Integer> segmentTree = new SegmentTree<Integer>(array, (a, b) -> a + b);
+        System.out.println(segmentTree.query(0, 5));
     }
 
 }
