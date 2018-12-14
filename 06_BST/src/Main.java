@@ -1,9 +1,4 @@
-import binarySearchTree.BST;
-import maxHeap.MaxHeap;
-import segmentTree.SegmentTree;
-
-import java.util.LinkedList;
-import java.util.Random;
+import AVLTree.AVLTree;
 
 public class Main {
 
@@ -60,9 +55,30 @@ public class Main {
 //        String str = solution.frequencySort("tree");
 //        System.out.println(str);
 
-        Integer[] array = new Integer[]{1, 2, 3, -1, -2, -3};
-        SegmentTree<Integer> segmentTree = new SegmentTree<Integer>(array, (a, b) -> a + b);
-        System.out.println(segmentTree.query(0, 5));
+//        Integer[] array = new Integer[]{1, 2, 3, -1, -2, -3};
+//        SegmentTree<Integer> segmentTree = new SegmentTree<Integer>(array, (a, b) -> a + b);
+//        System.out.println(segmentTree.query(0, 5));
+
+//        Trie trie = new Trie();
+//        trie.add("face");
+//        trie.add("fuck");
+//        trie.add("panda");
+//        trie.add("pan");
+//        System.out.println(trie.isPreFix("panZ"));
+
+        AVLTree<Integer,Integer> avlTree = new AVLTree<Integer, Integer>();
+        avlTree.add(23,1);
+        avlTree.add(20,1);
+        avlTree.add(29,1);
+        avlTree.add(14,1);
+        avlTree.add(17,1);
+        avlTree.add(55,1);
+        avlTree.add(30,1);
+        avlTree.add(9,1);
+        avlTree.add(69,1);
+        System.out.println(avlTree.isBST());
+        System.out.println(avlTree.isBalanced());
+
     }
 
 }
