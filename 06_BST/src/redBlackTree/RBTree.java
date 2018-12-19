@@ -1,28 +1,84 @@
-package AVLTree;
+package redBlackTree;
 
 /**
- * 二分搜索树
- *
- * @param <K>
- * @param <V>
+ * 红黑树
  */
-public class BST<K extends Comparable<K>, V> {
+public class RBTree<K extends Comparable<K>, V> {
+
+    private static final boolean RED = true;
+    private static final boolean BLACK = false;
 
     private class Node {
         private K key;
         private V value;
         private Node left, right;
+        private boolean color;
 
         public Node(K key, V value) {
             this.key = key;
             this.value = value;
             left = null;
             right = null;
+            color = RED;
         }
     }
 
     private int size;
+
     private Node root;
+
+    public RBTree() {
+        root = null;
+        size = 0;
+    }
+
+    private boolean isRed(Node node) {
+        if (null == node) {
+            return BLACK;
+        }
+        return RED;
+    }
+
+    //   node                     x
+    //  /   \     左旋转         /  \
+    // T1   x   --------->   node   T3
+    //     / \              /   \
+    //    T2 T3            T1   T2
+    private Node leftRotate(Node node) {
+        Node x = node.right;
+        node.right = x.left;
+        x.left = node;
+
+        x.color = node.color;
+        node.color = RED;
+
+        return x;
+    }
+
+    //     node                   x
+    //    /   \     右旋转       /  \
+    //   x    T2   ------->   y   node
+    //  / \                       /  \
+    // y  T1                     T1  T2
+    private Node rightRotate(Node node) {
+        Node x = node.left;
+
+        node.left = x.right;
+        x.right = node;
+
+        x.color = node.color;
+        node.color = RED;
+
+        return x;
+    }
+
+    // 颜色翻转
+    private void flipColors(Node node) {
+
+        node.color = RED;
+        node.left.color = BLACK;
+        node.right.color = BLACK;
+    }
 
     private Node getNode(Node node, K key) {
         if (node == null) {
@@ -40,26 +96,37 @@ public class BST<K extends Comparable<K>, V> {
 
     public void add(K key, V value) {
         root = add(root, key, value);
+        root.color = RED;
     }
 
     /**
-     * @param root
+     * @param node
      * @param key
      * @param value
      */
-    private Node add(Node root, K key, V value) {
-        if (null == root) {
+    private Node add(Node node, K key, V value) {
+        if (null == node) {
             size++;
             return new Node(key, value);
         }
-        if (root.key.compareTo(key) < 0) {
-            root.right = add(root.right, key, value);
-        } else if (root.key.compareTo(key) > 0) {
-            root.left = add(root.right, key, value);
+        if (node.key.compareTo(key) < 0) {
+            node.right = add(node.right, key, value);
+        } else if (node.key.compareTo(key) > 0) {
+            node.left = add(node.right, key, value);
         } else {
-            root.value = value;
+            node.value = value;
         }
-        return root;
+
+        if (isRed(node.right) && !isRed(node.left))
+            node = leftRotate(node);
+
+        if (isRed(node.left) && isRed(node.left.left))
+            node = rightRotate(node);
+
+        if (isRed(node.left) && isRed(node.right))
+            flipColors(node);
+
+        return node;
     }
 
     public V remove(K key) {
@@ -145,4 +212,5 @@ public class BST<K extends Comparable<K>, V> {
     public boolean isEmpty() {
         return size == 0;
     }
+
 }
